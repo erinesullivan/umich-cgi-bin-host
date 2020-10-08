@@ -48,35 +48,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const cgiBinHost = `${currentURL.protocol}//${currentURL.hostname}/cgi-bin/host`;
     const notFound = () => {
       getContainer.innerHTML = '<p>Hosting information could not be located.</p>';
-      return;
     }
-    fetch(cgiBinHost)
-      .then((response) => {
-        if(response.ok) return response.text();
-      })
-      .then((data) => {
-        if(!data || !data.startsWith('host')) {
-          notFound();
-        }
-        getContainer.innerHTML = '';
-        const hostDetails = data.split('\n');
-        hostDetails
-          .reverse()
-          .forEach((hostDetail, index) => {
-            const detail = hostDetail.split(': ');
-            if(hostDetail == '') return;
-            createLabel(detail[0], index);
-            createButton(index);
-            createInput(detail[1], index);
-            document
-              .getElementById(buttonID(index))
-              .addEventListener('click', {
-                handleEvent: () => copyInput(index)
+    if(currentURL.protocol.startsWith('http')) {
+      fetch(cgiBinHost)
+        .then((response) => {
+          if(response.ok) return response.text();
+        })
+        .then((data) => {
+          if(!data || !data.startsWith('host')) {
+            notFound();
+          } else {
+            getContainer.innerHTML = '';
+            const hostDetails = data.split('\n');
+            hostDetails
+              .reverse()
+              .forEach((hostDetail, index) => {
+                const detail = hostDetail.split(': ');
+                if(hostDetail == '') return;
+                createLabel(detail[0], index);
+                createButton(index);
+                createInput(detail[1], index);
+                document
+                  .getElementById(buttonID(index))
+                  .addEventListener('click', {
+                    handleEvent: () => copyInput(index)
+                  });
               });
-          });
-      })
-      .catch(error => {
-        notFound();
-      });
+          }
+        });
+    } else {
+      notFound();
+    }
   });
 });
