@@ -1,0 +1,194 @@
+/*************************
+  Table of Contents
+  1. Fonts
+  2. Variables
+  3. General
+    3.1 Accessibility
+    3.2 Images
+  4. Form
+    4.1 Loading Icon
+    4.2 Labels
+    4.3 Buttons & Inputs
+      4.3.1 Buttons
+      4.3.2 Inputs
+*************************/
+
+
+
+
+
+/****************/
+/*** 1. FONTS ***/
+/****************/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+
+
+
+
+/********************/
+/*** 2. VARIABLES ***/
+/********************/
+
+:root {
+  --dark: .85;
+  --darker: .7;
+  --color-blue: #00274c;
+  --color-maize-h: 48;
+  --color-maize-s: 100%;
+  --color-maize-l: 51%;
+  --color-maize: hsl(var(--color-maize-h), var(--color-maize-s), var(--color-maize-l));
+  --color-maize-dark: hsl(var(--color-maize-h), var(--color-maize-s), calc(var(--color-maize-l) * var(--dark)));
+  --color-maize-darker: hsl(var(--color-maize-h), var(--color-maize-s), calc(var(--color-maize-l) * var(--darker)));
+  --color-white-h: 210;
+  --color-white-s: 22%;
+  --color-white-l: 96%;
+  --color-white: hsl(var(--color-white-h), var(--color-white-s), var(--color-white-l));
+  --color-white-dark: hsl(var(--color-white-h), var(--color-white-s), calc(var(--color-white-l) * var(--dark)));
+  --color-white-darker: hsl(var(--color-white-h), var(--color-white-s), calc(var(--color-white-l) * var(--darker)));
+}
+  
+
+
+
+
+/******************/
+/*** 3. GENERAL ***/
+/******************/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  font: 1rem/1.25 'Montserrat', sans-serif;
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+
+
+/*** 3.1 ACCESSIBILITY ***/
+
+.sr-only {
+  border: 0;
+  clip: rect(0,0,0,0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width:1px;
+}
+
+
+
+/*** 3.2 IMAGES ***/
+
+svg {
+  width: auto;
+}
+
+
+
+
+
+/***************/
+/*** 4. FORM ***/
+/***************/
+
+#host-information {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 20rem;
+  padding: 0.5rem;
+}
+
+#host-information > * {
+  flex: 1 1 auto;
+}
+
+
+
+/*** 4.1 LOADING ICON ***/
+
+#host-information > .spinner {
+  animation: spinner 1.2s linear infinite;
+  color: var(--color-maize);
+  height: 3rem;
+}
+
+@keyframes spinner { 
+  100% { 
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/*** 4.2 LABELS ***/
+
+#host-information > label {
+  flex-basis: 100%;
+  margin-bottom: 0.25rem;
+}
+
+#host-information > * + label {
+  margin-top: 0.5rem;
+}
+
+
+
+/*** 4.3 BUTTONS & INPUTS ***/
+
+#host-information > button,
+#host-information > input {
+  border: 3px solid transparent;
+  padding: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+/* 4.3.1 BUTTONS */
+
+#host-information > button {
+  background-color: var(--color-maize);
+  border-color: var(--color-maize-dark);
+  color: var(--color-blue);
+  flex-grow: 0;
+  line-height: 0;
+}
+
+#host-information > button:hover {
+  border-color: var(--color-maize-darker);
+  cursor: pointer;
+}
+
+#host-information > button > svg {
+  height: 1rem;
+}
+
+/* 4.3.2 INPUTS */
+
+#host-information > input {
+  background-color: var(--color-white);
+  border-color: var(--color-white-dark);
+  font-size: 0.875rem;
+}
+
+#host-information > input:hover {
+  border-color: var(--color-white-darker);
+}

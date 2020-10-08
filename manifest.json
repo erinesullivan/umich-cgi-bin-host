@@ -1,0 +1,36 @@
+{
+  "name": "umich cgi-bin/host",
+  "version": "0.0.1",
+  "description": "Quickly grab the hosting information of ITS-hosted U-M sites.",
+  "short_name": "cgi-bin/host",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Get hosting information.",
+    "default_icon": {
+      "16": "./images/icon-16.png",
+      "32": "./images/icon-32.png",
+      "48": "./images/icon-48.png",
+      "128": "./images/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "./images/icon-16.png",
+    "32": "./images/icon-32.png",
+    "48": "./images/icon-48.png",
+    "128": "./images/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": ["./js/content.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "clipboardWrite"
+  ]
+}
