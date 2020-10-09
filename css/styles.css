@@ -111,14 +111,14 @@ svg {
 /*** 4. FORM ***/
 /***************/
 
-#host-information {
+main {
   display: flex;
   flex-wrap: wrap;
   min-width: 20rem;
   padding: 0.5rem;
 }
 
-#host-information > * {
+main > * {
   flex: 1 1 auto;
 }
 
@@ -126,7 +126,7 @@ svg {
 
 /*** 4.1 LOADING ICON ***/
 
-#host-information > .spinner {
+.icon-spinner {
   animation: spinner 1.2s linear infinite;
   color: var(--color-maize);
   height: 3rem;
@@ -142,12 +142,12 @@ svg {
 
 /*** 4.2 LABELS ***/
 
-#host-information > label {
+label {
   flex-basis: 100%;
   margin-bottom: 0.25rem;
 }
 
-#host-information > * + label {
+* + label {
   margin-top: 0.5rem;
 }
 
@@ -155,8 +155,8 @@ svg {
 
 /*** 4.3 BUTTONS & INPUTS ***/
 
-#host-information > button,
-#host-information > input {
+button,
+input {
   border: 3px solid transparent;
   padding: 0.25rem;
   transition: all 0.2s ease-in-out;
@@ -164,7 +164,7 @@ svg {
 
 /* 4.3.1 BUTTONS */
 
-#host-information > button {
+button {
   background-color: var(--color-maize);
   border-color: var(--color-maize-dark);
   color: var(--color-blue);
@@ -172,23 +172,23 @@ svg {
   line-height: 0;
 }
 
-#host-information > button:hover {
+button:hover {
   border-color: var(--color-maize-darker);
   cursor: pointer;
 }
 
-#host-information > button > svg {
+.icon-copy {
   height: 1rem;
 }
 
 /* 4.3.2 INPUTS */
 
-#host-information > input {
+input {
   background-color: var(--color-white);
   border-color: var(--color-white-dark);
   font-size: 0.875rem;
 }
 
-#host-information > input:hover {
+input:hover {
   border-color: var(--color-white-darker);
 }
